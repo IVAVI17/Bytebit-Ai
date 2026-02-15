@@ -10,6 +10,11 @@
 
 ## 🎯 Problem Statement
 
+**Track:** Professional Track  
+**Official Problem Statement:**  
+**AI for Healthcare & Life Sciences**
+
+
 In India's healthcare system, **paper-based workflows create critical inefficiencies**:
 - ⏰ Hours wasted on manual data entry
 - 📝 Errors from illegible handwriting
