@@ -2,7 +2,7 @@
 
 > **Transforming Healthcare Delivery in India Through AI-Powered Paperless Workflows**
 
-[![AI for Bharat Hackathon](https://img.shields.io/badge/AI%20for%20Bharat-Hackathon%202025-blue)](https://aiforbharat.com)
+[![AI for Bharat Hackathon](https://img.shields.io/badge/AI%20for%20Bharat-Hackathon-blue)](https://vision.hack2skill.com/event/ai-for-bharat?utm_source=hack2skill&utm_medium=homepage)
 [![Built with Kiro](https://img.shields.io/badge/Built%20with-Kiro-purple)](https://kiro.dev)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -192,7 +192,7 @@ Converting multilingual audio with medical terminology, Indian accents, and back
 
 ### 🏷️ Team Name: ByteBit  
 
-Developed for the **AI for Bharat Hackathon 2025**
+Developed for the **AI for Bharat Hackathon**
 
 ### 👨‍💻 Team Members
 
