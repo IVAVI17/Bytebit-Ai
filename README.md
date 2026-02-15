@@ -173,56 +173,6 @@ Converting multilingual audio with medical terminology, Indian accents, and back
 ---
 ---
 
-## 📁 Repository Structure
-
-```
-healthcare-workflow-automation/
-├── requirements.md          # Detailed requirements specification
-├── design.md               # System architecture and design
-├── tasks.md                # Implementation plan
-├── README.md               # This file
-├── src/
-│   ├── services/           # Microservices
-│   │   ├── whatsapp_bot/
-│   │   ├── appointment/
-│   │   ├── prescription/
-│   │   ├── analytics/
-│   │   └── reminder/
-│   ├── ai_services/        # AI/ML services
-│   │   ├── ocr/
-│   │   ├── nlp/
-│   │   ├── transcription/
-│   │   └── llm_query/
-│   ├── models/             # Data models
-│   ├── repositories/       # Data access layer
-│   └── utils/              # Utilities
-├── tests/                  # Test suite
-├── docker-compose.yml      # Local development setup
-└── requirements.txt        # Python dependencies
-```
-
----
-
-## 🧪 Testing
-
-We use **property-based testing** with Hypothesis to ensure correctness:
-
-```bash
-# Run all tests
-pytest
-
-# Run property-based tests
-pytest tests/property_tests/
-
-# Run integration tests
-pytest tests/integration/
-
-# Generate test coverage report
-pytest --cov=src --cov-report=html
-```
-
----
-
 ## 🎯 Hackathon Submission
 
 **AI for Bharat Hackathon - Professional Track**
@@ -231,49 +181,28 @@ pytest --cov=src --cov-report=html
 
 **Focus**: Workflow automation for healthcare professionals
 
-This project was developed using **Kiro**, an AI-assisted development tool, following spec-driven development methodology.
-
 ### **Submission Checklist**
 - ✅ requirements.md - Comprehensive requirements specification
 - ✅ design.md - System architecture and design document
 - ✅ README.md - Project overview and documentation
-- ✅ Synthetic data only - No real patient information
-- ✅ Clear AI justification - Explains why AI is needed
-- ✅ Responsible design - Limitations clearly stated
-
----
-
-## 🤝 Contributing
-
-This is a hackathon project, but contributions are welcome! Please read our contributing guidelines and code of conduct.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 👥 Team
 
-Developed for the AI for Bharat Hackathon 2025
+### 🏷️ Team Name: ByteBit  
 
----
+Developed for the **AI for Bharat Hackathon 2025**
 
-## 🙏 Acknowledgments
+### 👨‍💻 Team Members
 
-- **Kiro** - AI-assisted development platform
-- **AI for Bharat** - Hackathon organizers
-- **WhatsApp Business API** - Communication platform
-- **OpenAI** - LLM and transcription services
-- **Open source community** - Various libraries and tools
+- **Avi Gupta**  
+  - GitHub: https://github.com/IVAVI17  
+  - LinkedIn: https://www.linkedin.com/in/avi-gupta17/ 
 
----
-
-## 📞 Contact
-
-For questions or feedback, please open an issue or reach out to the team.
+- **Kartikey Bhatnagar**  
+  - GitHub: https://github.com/kartikey-codes
+  - LinkedIn: https://www.linkedin.com/in/kartikey-bhatnagar/
 
 ---
 
