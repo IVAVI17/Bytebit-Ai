@@ -287,7 +287,7 @@ async def get_patients(
     check_hospital_access(current_user, hospital_id)
     patients = db.query(Patient).filter(Patient.hospital_id == hospital_id).all()
     if not patients:
-        return {"message": "No patients found for this hospital"}
+        return {"patients": []}
     
     # Extract patient names and dates of admission
     patient_data = [{"name": patient.name, "doa": patient.doa, "id":patient.patient_id} for patient in patients]

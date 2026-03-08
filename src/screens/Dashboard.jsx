@@ -50,7 +50,7 @@ export default function Dashboard() {
         }
 
         const patientsData = await patientsResponse.json();
-        setPatients(patientsData.patients);
+        setPatients(patientsData.patients || []);
       } catch (error) {
         console.error('Error fetching hospital name and patients:', error);
         setErrorMessage('Something went wrong. Please try again later.');
