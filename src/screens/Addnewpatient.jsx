@@ -22,7 +22,7 @@ export default function AddNewPatient() {
       const formData = new FormData();
       formData.append('audio_file', audioFile);
 
-      const response = await fetch(`http://127.0.0.1:8000/newpatient?hospital_id=${hospital_id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/newpatient?hospital_id=${hospital_id}`, {
         method: 'POST',
         body: formData,
         headers: {

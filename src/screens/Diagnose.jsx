@@ -15,7 +15,7 @@ export default function Diagnose() {
   useEffect(() => {
     const fetchHospitalName = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/fetch_hospital_name?hospital_id=${hospital_id}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/fetch_hospital_name?hospital_id=${hospital_id}`);
         const data = await response.json();
         setHospitalName(data.hospital_name);
       } catch (error) {
@@ -25,7 +25,7 @@ export default function Diagnose() {
 
     const fetchPatientAndDoctors = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/patients_and_doctors/${hospital_id}/${patient_id}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/patients_and_doctors/${hospital_id}/${patient_id}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -57,7 +57,7 @@ export default function Diagnose() {
 
   const handleGeneratePDF = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/generate_pdf/${hospital_id}/${patient_id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/generate_pdf/${hospital_id}/${patient_id}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
