@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+sent_to_llm.png
+
+# Node/React
+node_modules/
+build/
+dist/
+
+# Environment/Secrets
+.env
+
+# Editor/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

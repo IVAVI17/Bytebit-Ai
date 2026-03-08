@@ -11,7 +11,7 @@ from google.oauth2.service_account import Credentials
 from config import GOOGLE_CREDENTIALS
 
 # ========= GOOGLE SHEETS CONFIG =========
-SPREADSHEET_ID = "1LWhTGN3mNYqe7gtuRNAKBx8W87HtO5QmLPxv-8zWCc8"
+SPREADSHEET_ID = os.getenv("SPREADSHEET_ID", "your_spreadsheet_id_here")
 SHEET_OCR_RESULTS = "OCR_Results"
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets",
@@ -108,7 +108,7 @@ def process_image(image_bytes, patient_id="", image_name=""):
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {os.getenv('FIREWORKS_API_KEY', 'fw_WUbj2iSi6bqasaKG92Et8n')}"
+        "Authorization": f"Bearer {os.getenv('FIREWORKS_API_KEY', 'your_fireworks_api_key_here')}"
     }
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     try:
