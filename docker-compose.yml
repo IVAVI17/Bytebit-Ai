@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # 1. FastAPI Backend Container
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: medtalk_backend
+    environment:
+      # Inject the MSSQL connection string directly from AWS RDS
+      - DATABASE_URL=${DATABASE_URL}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - ASSEMBLY_AI_KEY=${ASSEMBLY_AI_KEY}
+      - SECRET_KEY=${SECRET_KEY}
+    ports:
+      - "8000:8000"
+    restart: always
+
+  # 2. React Frontend Container
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # REQUIRED AT BUILD TIME: Set this in your local .env as your AWS EC2 Public DNS (e.g. REACT_APP_API_URL=http://54.123.45.67:8000)
+        - REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost:8000}
+    container_name: medtalk_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always

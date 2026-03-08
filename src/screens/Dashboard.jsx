@@ -16,7 +16,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchHospitalNameAndPatients = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/fetch_hospital_name?hospital_id=${hospital_id}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/fetch_hospital_name?hospital_id=${hospital_id}`, {
           headers: {
             'Authorization': `Bearer ${accessToken}` // Include JWT token in request headers
           }
@@ -34,7 +34,7 @@ export default function Dashboard() {
         const data = await response.json();
         setHospitalName(data.hospital_name);
 
-        const patientsResponse = await fetch(`http://127.0.0.1:8000/patients/${hospital_id}`, {
+        const patientsResponse = await fetch(`${process.env.REACT_APP_API_URL}/patients/${hospital_id}`, {
           headers: {
             'Authorization': `Bearer ${accessToken}` // Include JWT token in request headers
           }

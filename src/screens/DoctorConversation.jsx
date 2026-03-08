@@ -14,7 +14,7 @@ export default function DoctorConversation() {
   useEffect(() => {
     const fetchHospitalName = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/fetch_hospital_name?hospital_id=${hospital_id}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/fetch_hospital_name?hospital_id=${hospital_id}`);
         const data = await response.json();
         setHospitalName(data.hospital_name);
       } catch (error) {
@@ -36,7 +36,7 @@ export default function DoctorConversation() {
       const formData = new FormData();
       formData.append('audio_file', audioFile);
 
-      const response = await fetch(`http://127.0.0.1:8000/doctorconversation?patient_id=${patient_id}&hospital_id=${hospital_id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/doctorconversation?patient_id=${patient_id}&hospital_id=${hospital_id}`, {
         method: 'POST',
         body: formData,
         headers: {

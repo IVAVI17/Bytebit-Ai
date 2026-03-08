@@ -79,7 +79,7 @@ export default function PrescriptionOcr() {
       const formData = new FormData();
       formData.append('image_file', imageFile);
 
-      const response = await fetch(`http://127.0.0.1:8000/prescription_ocr?hospital_id=${hospital_id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/prescription_ocr?hospital_id=${hospital_id}`, {
         method: 'POST',
         body: formData,
         headers: {
