@@ -15,6 +15,8 @@ The system addresses critical inefficiencies in healthcare delivery: time wasted
 - **OCR_Service**: Optical Character Recognition service extracting text from handwritten prescriptions
 - **Reminder_Service**: Automated service sending scheduled notifications via WhatsApp
 - **Review_Request**: Post-consultation request for Patient feedback on Doctor and hospital
+- **Consultation_Audio**: Audio recording of doctor–patient consultation captured during the visit
+- **AI_Extractor**: AI service that extracts structured medical information from text, audio transcripts, and handwritten prescriptions
 
 ## Requirements
 
@@ -45,7 +47,7 @@ The system addresses critical inefficiencies in healthcare delivery: time wasted
 5. WHEN medical information is extracted, THE System SHALL tag the Patient_Update with extracted entities and store them in structured format
 6. WHEN a Patient sends updates in any supported language, THE System SHALL process them correctly
 
-### Requirement 3: Handwritten Prescription Digitization
+### Requirement 3A: Handwritten Prescription Digitization
 
 **User Story:** As a Doctor, I want to write prescriptions naturally on an iPad and have them automatically digitized, so that I can maintain my workflow while eliminating paper and improving accuracy.
 
@@ -58,6 +60,19 @@ The system addresses critical inefficiencies in healthcare delivery: time wasted
 5. WHEN structured prescription data is confirmed, THE System SHALL store it in the Master_Database linked to the Patient and Appointment
 6. WHEN prescription data is stored, THE System SHALL generate a formatted PDF prescription document
 7. WHEN PDF generation completes, THE System SHALL send the prescription PDF to the Patient via WhatsApp
+
+### Requirement 3B: Consultation Audio Capture and AI Extraction
+
+**User Story:** As a Doctor, I want to record patient consultations and have the system automatically transcribe and extract medical information, so that I can focus on patient interaction while the system generates structured clinical notes.
+
+#### Acceptance Criteria
+
+1. WHEN a Doctor starts recording during a consultation, THE System SHALL capture the audio as a Consultation_Audio file
+2. WHEN the consultation recording ends, THE Transcription_Service SHALL convert the audio to text
+3. WHEN transcription is completed, THE AI_Extractor SHALL analyze the text and extract medical entities including symptoms, diagnosis, medications, and clinical notes
+4. WHEN extracted information is generated, THE System SHALL present the structured data to the Doctor for verification
+5. WHEN the Doctor confirms the extracted information, THE System SHALL store the structured clinical notes in the Master_Database linked to the Patient and Appointment
+6. WHEN structured consultation data is stored, THE System SHALL make it available for dashboard analytics and future patient history queries
 
 ### Requirement 4: Post-Consultation Engagement
 
@@ -120,5 +135,6 @@ This system demonstrates meaningful AI use in several critical areas:
 4. **Audio Transcription**: Converting multilingual audio to text requires sophisticated speech recognition models that handle accents, medical terminology, and background noise.
 
 5. **Semantic Search**: The Graph_Database combined with LLM enables semantic understanding of medical relationships, allowing queries like "patients with similar symptoms" that go beyond keyword matching.
+6. **Clinical Conversation Understanding**: Doctor–patient consultations often contain critical medical information embedded in natural conversation. AI enables transcription and structured extraction of symptoms, diagnosis, and treatment details from audio conversations, reducing manual documentation workload.
 
 Without AI, this system would require rigid forms, manual data entry, and complex query interfaces that would not achieve the goal of reducing healthcare professional workload.
