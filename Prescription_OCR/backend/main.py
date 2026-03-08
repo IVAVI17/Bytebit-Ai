@@ -1,8 +1,8 @@
 
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from ocr_pipeline import process_image
-
+from typing import Optional
 
 app = FastAPI()
 
@@ -17,10 +17,13 @@ app.add_middleware(
 
 
 @app.post("/analyze")
-async def analyze(file: UploadFile = File(...)):
-
+async def analyze(
+    file: UploadFile = File(...),
+    patient_id: Optional[str] = Form(default=""),
+    image_name: Optional[str] = Form(default="")
+):
     contents = await file.read()
 
-    result = process_image(contents)
+    result = process_image(contents, patient_id=patient_id, image_name=(image_name or file.filename))
 
     return result

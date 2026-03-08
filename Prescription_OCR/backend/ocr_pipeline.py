@@ -2,13 +2,79 @@
 import os
 import io
 import base64
+import datetime
+import gspread
 import requests
 import json
 from PIL import Image
+from google.oauth2.service_account import Credentials
+from config import GOOGLE_CREDENTIALS
 
-def process_image(image_bytes):
+# ========= GOOGLE SHEETS CONFIG =========
+SPREADSHEET_ID = "1LWhTGN3mNYqe7gtuRNAKBx8W87HtO5QmLPxv-8zWCc8"
+SHEET_OCR_RESULTS = "OCR_Results"
+
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets",
+          "https://www.googleapis.com/auth/drive"]
+
+creds = Credentials.from_service_account_info(
+    GOOGLE_CREDENTIALS, scopes=SCOPES
+)
+client = gspread.authorize(creds)
+ss = client.open_by_key(SPREADSHEET_ID)
+
+def get_sheet(name):
+    return ss.worksheet(name)
+
+def init_ocr_sheet():
+    """Create OCR_Results sheet if it doesn't exist"""
+    try:
+        ss.worksheet(SHEET_OCR_RESULTS)
+    except:
+        ss.add_worksheet(SHEET_OCR_RESULTS, rows="1000", cols="10")
+        sh = get_sheet(SHEET_OCR_RESULTS)
+        sh.append_row([
+            "Timestamp",
+            "Patient_ID",
+            "Extracted_Text",
+            "Medication",
+            "Dosage",
+            "Duration",
+            "Side_Effects",
+            "Image_Name",
+            "Status",
+            "Notes"
+        ])
+
+def save_ocr_result(extracted_text, patient_id="", image_name="", additional_data=None):
+    """Save OCR extracted text to Google Sheets"""
+    init_ocr_sheet()
+    
+    sheet = get_sheet(SHEET_OCR_RESULTS)
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Parse extracted text to extract key fields (you can enhance this)
+    medication = extracted_text.split('\n')[0] if extracted_text else ""
+    
+    row = [
+        timestamp,
+        patient_id,
+        extracted_text,
+        medication,  # You can enhance parsing
+        "",  # Dosage - to be filled
+        "",  # Duration - to be filled
+        "",  # Side effects - to be filled
+        image_name,
+        "Pending_Review",
+        ""
+    ]
+    
+    sheet.append_row(row)
+    print(f"✓ OCR result saved to Google Sheets")
 
 
+
+def process_image(image_bytes, patient_id="", image_name=""):
     image = Image.open(io.BytesIO(image_bytes)).convert("RGBA")
     # Add a white background
     white_bg = Image.new("RGBA", image.size, (255, 255, 255, 255))
@@ -51,6 +117,13 @@ def process_image(image_bytes):
     except Exception:
         llm_output = response.text
     print("LLM Output:\n", llm_output)
+    save_ocr_result(
+        extracted_text=llm_output,
+        patient_id=patient_id,
+        image_name=image_name
+    )
+    
     return {
-        "llm_output": llm_output
+        "llm_output": llm_output,
+        "saved_to_sheets": True
     }

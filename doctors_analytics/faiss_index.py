@@ -12,30 +12,28 @@ metadata = []
 
 
 def build_index():
-
-    rows = run_read_query("SELECT * FROM master")
-
+    """Build FAISS index from analytics sheet"""
+    
+    # Fetch all records from Google Sheets
+    rows = run_read_query("SELECT * FROM analytics")
+    
     for row in rows:
-
-        text = f"{row['symptoms']} {row['patient_notes']} {row['doctor_notes']}"
-
-        embedding = model.encode(text)
-
-        index.add(np.array([embedding]).astype("float32"))
-
-        metadata.append(row)
-
+        text = f"{row.get('symptoms', '')} {row.get('patient_notes', '')} {row.get('doctor_notes', '')}"
+        
+        if text.strip():  # Only add if there's content
+            embedding = model.encode(text)
+            index.add(np.array([embedding]).astype("float32"))
+            metadata.append(row)
 
 def semantic_search(query, k=5):
-
+    """Search using semantic similarity"""
+    
     embedding = model.encode(query)
-
     D, I = index.search(np.array([embedding]).astype("float32"), k)
-
+    
     results = []
-
     for idx in I[0]:
         if idx < len(metadata):
             results.append(metadata[idx])
-
+    
     return results
