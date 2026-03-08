@@ -57,6 +57,8 @@ Our system eliminates paper at every touchpoint while leveraging AI to handle th
 - **iPad Handwriting Capture**: Doctors write naturally on tablets
 - **OCR Extraction**: AI reads Doctor's handwritten prescriptions with high accuracy
 - **Structured Data**: Automatically extracts medicines, dosages, diagnosis, and notes
+- **Audio Consultation Capture**: Doctors can record patient consultations for AI processing
+- **AI Transcription & Extraction**: Automatically converts conversations into structured clinical notes
 - **PDF Generation**: Creates professional prescription documents
 - **WhatsApp Delivery**: Sends prescriptions directly to patients
 
@@ -149,11 +151,12 @@ graph LR
 ```mermaid
 graph LR
     A[View Patient<br/>Updates] --> B[Conduct<br/>Consultation]
-    B --> C[Write<br/>Prescription]
-    C --> D[AI Extracts<br/>Data]
+    B --> C[Write on iPad<br/>or Record Audio]
+    C --> D[AI Transcribes &<br/>Extracts Data]
     D --> E[Verify &<br/>Confirm]
-    E --> F[Query Patient<br/>History]
-    F --> G[View<br/>Analytics]
+    E --> F[Generate<br/>Prescription]
+    F --> G[Query Patient<br/>History]
+    G --> H[View<br/>Analytics]
 ```
 ---
 
@@ -188,10 +191,13 @@ Converting multilingual audio with medical terminology, Indian accents, and back
 **Focus**: Workflow automation for healthcare professionals
 
 ### **Submission Checklist**
-- ✅ requirements.md - Comprehensive requirements specification
-- ✅ design.md - System architecture and design document
-- ✅ README.md - Project overview and documentation
-
+-✅ requirements.md - Comprehensive requirements specification
+-✅ design.md - System architecture and design document
+-✅ README.md - Project overview and documentation
+-✅ Video Demo - Walkthrough of the complete system and features
+-✅ Prototype Development PPT - Architecture, workflow, and implementation details
+-✅ GitHub Repository - Source code and development history
+-✅ Website Link - Live prototype / application access
 ---
 
 ## 👥 Team
