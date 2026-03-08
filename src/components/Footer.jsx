@@ -12,7 +12,7 @@ export default function Footer() {
       <li class="nav-item"><Link to="#" class="nav-link px-2 text-muted">FAQs</Link></li>
       <li class="nav-item"><Link to="#" class="nav-link px-2 text-muted">About</Link></li>
     </ul>
-    <p class="text-center text-muted">© 2024 MedTalk, Inc</p>
+    <p class="text-center text-muted">© 2026 MedTalk, Inc</p>
   </footer>
 </div>
   )
