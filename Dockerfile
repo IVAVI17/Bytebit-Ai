@@ -11,6 +11,8 @@ COPY . .
 # We use ARG to allow passing the AWS Public IP for the API URL during build time
 ARG REACT_APP_API_URL
 ENV REACT_APP_API_URL=$REACT_APP_API_URL
+ENV GENERATE_SOURCEMAP=false
+ENV NODE_OPTIONS=--max_old_space_size=512
 
 RUN npm run build
 
