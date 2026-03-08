@@ -191,13 +191,13 @@ Converting multilingual audio with medical terminology, Indian accents, and back
 **Focus**: Workflow automation for healthcare professionals
 
 ### **Submission Checklist**
--✅ requirements.md - Comprehensive requirements specification
--✅ design.md - System architecture and design document
--✅ README.md - Project overview and documentation
--✅ Video Demo - Walkthrough of the complete system and features
--✅ Prototype Development PPT - Architecture, workflow, and implementation details
--✅ GitHub Repository - Source code and development history
--✅ Website Link - Live prototype / application access
+- ✅ **requirements.md** - Comprehensive requirements specification  
+- ✅ **design.md** - System architecture and design document  
+- ✅ **README.md** - Project overview and documentation  
+- ✅ **Video Demo** - Walkthrough of the complete system and features  
+- ✅ **Prototype Development PPT** - Architecture, workflow, and implementation details  
+- ✅ **GitHub Repository** - Source code and development history  
+- ✅ **Website Link** - Live prototype / application access
 ---
 
 ## 👥 Team
